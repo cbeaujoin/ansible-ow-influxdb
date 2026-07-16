@@ -75,10 +75,18 @@ influxdb_udp_settings: |
   enabled = true
   bind-address = "{{ influxdb_http_ip }}:8089"
   database = "openwisp2"
+  {{ influxdb_udp_settings_custom_standard_rp }}
   # For writing data with the "short" retention policy
   [[udp]]
   enabled = true
   bind-address = "{{ influxdb_http_ip }}:8090"
   database = "openwisp2"
   retention-policy = "short"
+  {{ influxdb_udp_settings_custom_short_rp }}
+# Custom UDP settings for the default retention policy listener.
+# Defaults to an empty string.
+influxdb_udp_settings_custom_standard_rp: ""
+# Custom UDP settings for the short retention policy listener.
+# Defaults to an empty string.
+influxdb_udp_settings_custom_short_rp: ""
 ```
