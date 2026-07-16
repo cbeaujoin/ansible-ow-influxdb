@@ -75,6 +75,7 @@ influxdb_udp_settings: |
   enabled = true
   bind-address = "{{ influxdb_http_ip }}:8089"
   database = "openwisp2"
+  {{ influxdb_udp_settings_custom_standard_rp }}
   # For writing data with the "short" retention policy
   [[udp]]
   enabled = true
@@ -84,4 +85,11 @@ influxdb_udp_settings: |
 # When "influxdb_data_dir" is set to a path different from the default
 # (/var/lib/influxdb), InfluxDB will store its data in the specified directory.
 influxdb_data_dir: "/opt/influxdb"
+  {{ influxdb_udp_settings_custom_short_rp }}
+# Custom UDP settings for the default retention policy listener.
+# Defaults to an empty string.
+influxdb_udp_settings_custom_standard_rp: ""
+# Custom UDP settings for the short retention policy listener.
+# Defaults to an empty string.
+influxdb_udp_settings_custom_short_rp: ""
 ```
